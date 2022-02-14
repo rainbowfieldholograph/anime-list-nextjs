@@ -1,0 +1,31 @@
+.wrapper {
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 0.2rem;
+  overflow: hidden;
+
+  .inner {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+
+    .icon {
+      padding: 0.2rem;
+      order: 0;
+    }
+
+    .input {
+      flex-grow: 1;
+      margin-left: 0.5rem;
+      color: #000;
+      order: 1;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus + .icon {
+      }
+    }
+  }
+}
