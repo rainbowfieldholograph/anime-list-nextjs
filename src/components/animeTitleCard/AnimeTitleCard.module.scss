@@ -1,0 +1,10 @@
+.card {
+  display: flex;
+  flex-direction: column;
+
+  &:focus-visible .title,
+  &:hover .title {
+    color: var(--text-color-active);
+    text-decoration: underline;
+  }
+}

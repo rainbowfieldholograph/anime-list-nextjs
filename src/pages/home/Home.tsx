@@ -1,6 +1,10 @@
 import { FC } from 'react'
-import { Container } from '../../components/container/Container'
+import { PopularNow } from '../../components/popularNow/PopularNow'
 
 export const Home: FC = (): JSX.Element => {
-  return <>Home</>
+  return (
+    <>
+      <PopularNow />
+    </>
+  )
 }

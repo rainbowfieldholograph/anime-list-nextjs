@@ -8,10 +8,12 @@ export const Layout: FC = (): JSX.Element => {
   return (
     <div className={styles.layout}>
       <Header />
-      <main className={styles.container}>
-        <Outlet />
-      </main>
-      <Footer className={styles.container}>xnsvf</Footer>
+      <div className={styles.container}>
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   )
 }

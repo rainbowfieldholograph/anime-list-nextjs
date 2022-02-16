@@ -5,6 +5,7 @@ import styles from './DropdownMenu.module.scss'
 
 import { FC, useRef } from 'react'
 import { DropdownMenuProps } from './DropdownMenu.props'
+import clsx from 'clsx'
 
 export const DropdownMenu: FC<DropdownMenuProps> = ({
   menuItems,
@@ -23,7 +24,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
   }
 
   return (
-    <details onMouseLeave={closeMenu} ref={menuRef} className={styles.menu}>
+    <details onMouseLeave={closeMenu} ref={menuRef} className={clsx(styles.menu, className)}>
       <summary onMouseEnter={openMenu} ref={buttonRef} className={styles.button}>
         {title}
       </summary>

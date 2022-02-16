@@ -1,0 +1,39 @@
+.wrapper {
+  --line-width: 8px;
+  .list {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  }
+
+  .headLink {
+    width: 100%;
+    display: block;
+    background-color: rgb(232, 235, 239);
+    padding: 0.2em 0.5em 0.2em calc(0.5em + var(--line-width));
+    font-weight: 600;
+    font-size: 1.2em;
+    margin: 1rem 0 0.5rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: var(--line-width);
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgb(216, 221, 228);
+    }
+
+    &:focus-visible,
+    &:hover {
+      color: var(--text-color-active);
+      text-decoration: underline;
+    }
+  }
+}

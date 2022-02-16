@@ -1,21 +1,21 @@
 .menu {
-  --color-default: rgb(62, 62, 62);
-  --color-focus: rgb(124, 124, 124);
-  --color-opened: rgb(87, 87, 87);
-  --padding: 1rem;
+  --menu-color-default: rgb(62, 62, 62);
+  --menu-color-opened: rgb(87, 87, 87);
+  --menu-padding: 1rem;
 
   width: 190px;
   position: relative;
+  z-index: 2;
 
   &[open] .button {
-    background-color: var(--color-opened);
+    background-color: var(--menu-color-opened);
   }
 
   .button {
     cursor: pointer;
     display: block;
-    padding: var(--padding);
-    background-color: var(--color-default);
+    padding: var(--menu-padding);
+    background-color: var(--menu-color-default);
     user-select: none;
 
     &:hover,
@@ -30,12 +30,12 @@
     flex-direction: column;
     position: absolute;
     left: 0;
-    background-color: var(--color-opened);
+    background-color: var(--menu-color-opened);
     width: 100%;
 
     .link {
       display: block;
-      padding: var(--padding);
+      padding: var(--menu-padding);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

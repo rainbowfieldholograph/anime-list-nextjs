@@ -5,4 +5,14 @@
   padding: 0 1rem;
   background-color: rgb(52, 52, 52);
   color: #fff;
+
+  .button {
+    padding: 1rem;
+
+    &:focus-visible,
+    &:hover {
+      background-color: var(--color-focus);
+      outline: none;
+    }
+  }
 }
