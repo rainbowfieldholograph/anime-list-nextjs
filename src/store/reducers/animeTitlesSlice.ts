@@ -13,6 +13,11 @@ const initialState: AnimeTitlesState = {
       title: 'attack on titans',
       image: 'https://desu.shikimori.one/system/animes/preview/48583.jpg?1644196833',
     },
+    {
+      id: 1,
+      title: 'attack on titans',
+      image: 'https://desu.shikimori.one/system/animes/preview/48583.jpg?1644196833',
+    },
   ],
 }
 

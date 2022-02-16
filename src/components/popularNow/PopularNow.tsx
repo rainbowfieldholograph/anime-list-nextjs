@@ -14,9 +14,10 @@ export const PopularNow: FC = ({}: PopularNowProps): JSX.Element => {
         Сейчас на экранах
       </a>
       <ul className={styles.list}>
-        {animeTitles.map((anime) => (
-          <AnimeTitleCard {...anime} link={`${anime.id}-${spacesToDash(anime.title)}`} />
-        ))}
+        {animeTitles.map((anime) => {
+          const computeLink: string = `${anime.id}-${spacesToDash(anime.title)}`
+          return <AnimeTitleCard {...anime} link={computeLink} />
+        })}
       </ul>
     </section>
   )

@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 
+  .title {
+    color: rgb(80, 150, 255);
+  }
+
   &:focus-visible .title,
   &:hover .title {
     color: var(--text-color-active);
