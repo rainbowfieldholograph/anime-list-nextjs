@@ -7,11 +7,14 @@ interface AnimeTitlesState {
   loading: 'idle' | 'pending' | 'succeeded' | 'failed'
 }
 
-export const fetchAnimeTitles = createAsyncThunk('animeTitles/fetchAnimeTitles', async () => {
-  const response = await fetch('https://api.jikan.moe/v4/top/anime')
-  const data: Response = await response.json()
-  return data.data
-})
+export const fetchPopularNowAnimeTitles = createAsyncThunk(
+  'animeTitles/fetchAnimeTitles',
+  async () => {
+    const response = await fetch('https://api.jikan.moe/v4/seasons/now')
+    const data: Response = await response.json()
+    return data.data
+  }
+)
 
 const initialState: AnimeTitlesState = {
   animeTitles: [],
@@ -23,10 +26,10 @@ export const animeTitlesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchAnimeTitles.pending, (state, action) => {
+    builder.addCase(fetchPopularNowAnimeTitles.pending, (state, action) => {
       state.loading = 'pending'
     }),
-      builder.addCase(fetchAnimeTitles.fulfilled, (state, action) => {
+      builder.addCase(fetchPopularNowAnimeTitles.fulfilled, (state, action) => {
         state.loading = 'succeeded'
         state.animeTitles = action.payload
       })

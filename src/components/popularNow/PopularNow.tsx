@@ -4,14 +4,15 @@ import styles from './PopularNow.module.scss'
 import { AnimeTitleCard } from '../animeTitleCard/AnimeTitleCard'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { spacesToDash } from '../../helpers/helpers'
-import { fetchAnimeTitles } from '../../store/reducers/animeTitlesSlice'
+import { fetchPopularNowAnimeTitles } from '../../store/reducers/animeTitlesSlice'
 
 export const PopularNow: FC = ({}: PopularNowProps): JSX.Element => {
   const animeTitles = useAppSelector((state) => state.animeTitles.animeTitles)
   const dispatch = useAppDispatch()
+  let animeCount = 0
 
   useEffect(() => {
-    dispatch(fetchAnimeTitles())
+    dispatch(fetchPopularNowAnimeTitles())
   }, [dispatch])
 
   console.log(animeTitles)
@@ -23,6 +24,8 @@ export const PopularNow: FC = ({}: PopularNowProps): JSX.Element => {
       </a>
       <ul className={styles.list}>
         {animeTitles.map((anime) => {
+          animeCount++
+          if (animeCount > 7) return
           const computeLink: string = `${anime.mal_id}-${spacesToDash(anime.title)}`
           return (
             <AnimeTitleCard
