@@ -1,30 +1,36 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IAnimeTitle } from '../../interfaces/AnimeTitle.interface'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { Anime, Response } from '../../interfaces/response.interface'
 import type { RootState } from '../store'
 
 interface AnimeTitlesState {
-  animeTitles: IAnimeTitle[]
+  animeTitles: Anime[]
+  loading: 'idle' | 'pending' | 'succeeded' | 'failed'
 }
 
+export const fetchAnimeTitles = createAsyncThunk('animeTitles/fetchAnimeTitles', async () => {
+  const response = await fetch('https://api.jikan.moe/v4/top/anime')
+  const data: Response = await response.json()
+  return data.data
+})
+
 const initialState: AnimeTitlesState = {
-  animeTitles: [
-    {
-      id: 0,
-      title: 'attack on titans',
-      image: 'https://desu.shikimori.one/system/animes/preview/48583.jpg?1644196833',
-    },
-    {
-      id: 1,
-      title: 'attack on titans',
-      image: 'https://desu.shikimori.one/system/animes/preview/48583.jpg?1644196833',
-    },
-  ],
+  animeTitles: [],
+  loading: 'idle',
 }
 
 export const animeTitlesSlice = createSlice({
   name: 'animeTitles',
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchAnimeTitles.pending, (state, action) => {
+      state.loading = 'pending'
+    }),
+      builder.addCase(fetchAnimeTitles.fulfilled, (state, action) => {
+        state.loading = 'succeeded'
+        state.animeTitles = action.payload
+      })
+  },
 })
 
 export const {} = animeTitlesSlice.actions

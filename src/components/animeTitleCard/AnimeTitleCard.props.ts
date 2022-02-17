@@ -1,5 +1,6 @@
-import { IAnimeTitle } from '../../interfaces/AnimeTitle.interface'
-
-export interface AnimeTitleCardProps extends IAnimeTitle {
+export interface AnimeTitleCardProps {
+  id: number
+  title: string
+  image: string
   link: string
 }
