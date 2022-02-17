@@ -5,27 +5,28 @@ import { AnimeTitleCard } from '../animeTitleCard/AnimeTitleCard'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { spacesToDash } from '../../helpers/helpers'
 import { fetchPopularNowAnimeTitles } from '../../store/reducers/animeTitlesSlice'
+import { Link } from 'react-router-dom'
 
 export const PopularNow: FC = ({}: PopularNowProps): JSX.Element => {
   const animeTitles = useAppSelector((state) => state.animeTitles.animeTitles)
   const dispatch = useAppDispatch()
   let animeCount = 0
+  const MAX_ANIME_COUNT = 7
 
   useEffect(() => {
     dispatch(fetchPopularNowAnimeTitles())
   }, [dispatch])
 
-  console.log(animeTitles)
-
   return (
     <section className={styles.wrapper}>
-      <a className={styles.headLink} href="">
+      <Link className={styles.headLink} to="">
         Сейчас на экранах
-      </a>
+      </Link>
       <ul className={styles.list}>
         {animeTitles.map((anime) => {
           animeCount++
-          if (animeCount > 7) return
+          if (animeCount > MAX_ANIME_COUNT) return
+          // console.log('title', anime.title)
           const computeLink: string = `${anime.mal_id}-${spacesToDash(anime.title)}`
           return (
             <AnimeTitleCard
