@@ -15,4 +15,6 @@ html {
   --inner-content-padding: 0 0.5rem;
   --text-color-active: rgb(221, 82, 2);
   --container-width: 1200px;
+
+  font-size: 16px;
 }

@@ -26,7 +26,6 @@ export const PopularNow: FC = ({}: PopularNowProps): JSX.Element => {
         {animeTitles.map((anime) => {
           animeCount++
           if (animeCount > MAX_ANIME_COUNT) return
-          // console.log('title', anime.title)
           const computeLink: string = `${anime.mal_id}-${spacesToDash(anime.title)}`
           return (
             <AnimeTitleCard

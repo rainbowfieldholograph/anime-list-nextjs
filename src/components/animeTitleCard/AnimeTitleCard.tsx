@@ -10,9 +10,13 @@ export const AnimeTitleCard: FC<AnimeTitleCardProps> = ({
   link,
 }: AnimeTitleCardProps): JSX.Element => {
   return (
-    <Link to={link} className={styles.card}>
-      <img src={image} alt={title} />
-      <p className={styles.title}>{title}</p>
-    </Link>
+    <article className={styles.card}>
+      <Link className={styles.link} to={link}>
+        <div className={styles.imageWrapper}>
+          <img src={image} alt={title} />
+        </div>
+        <p className={styles.title}>{title}</p>
+      </Link>
+    </article>
   )
 }
