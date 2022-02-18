@@ -1,12 +1,11 @@
 .card {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  flex: 1;
+  width: 200px;
 
   .link {
     display: block;
-    flex: 1;
+    width: inherit;
 
     .imageWrapper {
       width: 100%;

@@ -19,7 +19,7 @@ export const PopularNow: FC = ({}: PopularNowProps): JSX.Element => {
       <Link className={styles.headLink} to="">
         Сейчас на экранах
       </Link>
-      <AnimeTitlesCarousel animeTitles={animeTitles} maxCardsCount={7} />
+      <AnimeTitlesCarousel animeTitles={animeTitles} />
     </section>
   )
 }

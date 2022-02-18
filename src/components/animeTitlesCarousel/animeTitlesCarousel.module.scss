@@ -1,9 +1,40 @@
-.list {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
+.wrapper {
+  position: relative;
 
-  @media (max-width: 1000px) {
-    display: none;
+  .list {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    overflow-x: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      background-color: transparent;
+    }
+  }
+
+  .control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: gray;
+    z-index: 1;
+    border: 1px solid rgba(0, 60, 160, 0.2);
+    box-shadow: 0 10px 20px 0 rgba(0, 100, 220, 0.1);
+    flex-shrink: 0;
+    position: absolute;
+  }
+
+  .controlLeft {
+    left: 0;
+    top: 40%;
+  }
+
+  .controlRight {
+    right: 0;
+    top: 40%;
   }
 }
