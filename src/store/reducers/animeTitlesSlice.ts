@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { API_BASE_URL } from '../../helpers/api'
 import { Anime } from '../../interfaces/anime.interface'
 import { SeasonNowResponse } from '../../interfaces/seasonNowResponse'
 import type { RootState } from '../store'
@@ -11,7 +12,7 @@ interface AnimeTitlesState {
 export const fetchPopularNowAnimeTitles = createAsyncThunk(
   'animeTitles/fetchAnimeTitles',
   async () => {
-    const response = await fetch('https://api.jikan.moe/v4/seasons/now')
+    const response = await fetch(`${API_BASE_URL}seasons/now`)
     const data: SeasonNowResponse = await response.json()
     return data.data
   }
