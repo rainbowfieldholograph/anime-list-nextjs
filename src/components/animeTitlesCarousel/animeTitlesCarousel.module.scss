@@ -1,0 +1,9 @@
+.list {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
+}

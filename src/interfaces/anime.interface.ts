@@ -137,13 +137,3 @@ export interface Anime {
   themes: Theme[]
   demographics: Demographic[]
 }
-
-export interface Pagination {
-  last_visible_page: number
-  has_next_page: boolean
-}
-
-export interface Response {
-  data: Anime[]
-  pagination: Pagination
-}

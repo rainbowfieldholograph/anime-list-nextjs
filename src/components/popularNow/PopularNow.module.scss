@@ -1,16 +1,6 @@
 .wrapper {
   --line-width: 8px;
 
-  .list {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-
-    @media (max-width: 1000px) {
-      display: none;
-    }
-  }
-
   .headLink {
     width: 100%;
     display: block;
