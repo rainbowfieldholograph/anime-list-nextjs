@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import animeTitlesReducer from './reducers/animeTitlesSlice'
+import seasonsReducer from './reducers/seasonsSlice'
 
 export const store = configureStore({
-  reducer: { animeTitles: animeTitlesReducer },
+  reducer: { seasons: seasonsReducer },
 })
 
 export type RootState = ReturnType<typeof store.getState>

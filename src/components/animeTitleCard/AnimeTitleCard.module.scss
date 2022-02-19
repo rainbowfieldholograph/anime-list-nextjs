@@ -1,11 +1,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 150px;
 
   .link {
     display: block;
     width: inherit;
+    outline: none;
+    color: rgb(80, 150, 255);
 
     .imageWrapper {
       width: 100%;
@@ -21,16 +23,16 @@
     }
 
     .title {
-      color: rgb(80, 150, 255);
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      color: inherit;
     }
-  }
 
-  &:focus-visible .title,
-  &:hover .title {
-    color: var(--text-color-active);
-    text-decoration: underline;
+    &:focus-visible,
+    &:hover {
+      color: var(--text-color-active);
+      text-decoration: underline;
+    }
   }
 }

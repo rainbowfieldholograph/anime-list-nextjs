@@ -1,0 +1,14 @@
+.head {
+  color: orange;
+  background-color: rgb(255, 232, 216);
+
+  &::before {
+    background-color: rgb(255, 213, 184);
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
