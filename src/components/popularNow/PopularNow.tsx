@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react'
 import { PopularNowProps } from './PopularNow.props'
 import styles from './PopularNow.module.scss'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
-import { fetchSeasonsNow, selectSeasonsNow } from '../../store/reducers/seasonsSlice'
+import { fetchSeasonsNow, selectSeasonsNow } from '../../store/reducers/seasonsNowSlice'
 import { Link } from 'react-router-dom'
 import { AnimeTitlesCarousel } from '../animeTitlesCarousel/animeTitlesCarousel'
 import { HeadLine } from '../headLine/HeadLine'
@@ -19,7 +19,7 @@ export const PopularNow: FC = ({}: PopularNowProps): JSX.Element => {
     <section className={styles.wrapper}>
       <HeadLine>
         <Link className={styles.headLink} to="ws">
-          Сейчас на экранах
+          Popular now
         </Link>
       </HeadLine>
       <AnimeTitlesCarousel animeTitles={anime} />

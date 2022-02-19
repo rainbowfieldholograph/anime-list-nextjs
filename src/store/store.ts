@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import seasonsReducer from './reducers/seasonsSlice'
+import seasonsNowReducer from './reducers/seasonsNowSlice'
 
 export const store = configureStore({
-  reducer: { seasons: seasonsReducer },
+  reducer: { seasonsNow: seasonsNowReducer },
 })
 
 export type RootState = ReturnType<typeof store.getState>

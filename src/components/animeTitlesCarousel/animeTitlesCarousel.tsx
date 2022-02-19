@@ -42,7 +42,7 @@ export const AnimeTitlesCarousel: FC<AnimeTitlesCarouselProps> = ({
       >
         {'<'}
       </button>
-      <ul tabIndex={-1} className={styles.list} ref={listRef}>
+      <ul className={styles.list} ref={listRef}>
         {animeTitles.map((anime) => {
           const computeLink: string = `${anime.mal_id}-${spacesToDash(anime.title)}`
           return (

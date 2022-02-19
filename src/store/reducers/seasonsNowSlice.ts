@@ -5,7 +5,7 @@ import { LoadingState } from '../../helpers/loadingState.enum'
 import { SeasonNowResponse } from '../../interfaces/seasonNowResponse'
 import type { RootState } from '../store'
 
-interface SeasonsState {
+interface SeasonsNowState {
   now: Anime[]
   loading: LoadingState
 }
@@ -16,13 +16,13 @@ export const fetchSeasonsNow = createAsyncThunk('animeTitles/fetchAnimeTitles', 
   return data.data
 })
 
-const initialState: SeasonsState = {
+const initialState: SeasonsNowState = {
   now: [],
   loading: LoadingState.idle,
 }
 
-export const seasonsSlice = createSlice({
-  name: 'seasons',
+export const seasonsNowSlice = createSlice({
+  name: 'seasonsNow',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -36,8 +36,8 @@ export const seasonsSlice = createSlice({
   },
 })
 
-export const {} = seasonsSlice.actions
+export const {} = seasonsNowSlice.actions
 
-export const selectSeasonsNow = (state: RootState) => state.seasons
+export const selectSeasonsNow = (state: RootState) => state.seasonsNow
 
-export default seasonsSlice.reducer
+export default seasonsNowSlice.reducer
