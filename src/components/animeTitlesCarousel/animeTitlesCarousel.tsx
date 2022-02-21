@@ -47,6 +47,7 @@ export const AnimeTitlesCarousel: FC<AnimeTitlesCarouselProps> = ({
           const computeLink: string = `${anime.mal_id}-${spacesToDash(anime.title)}`
           return (
             <AnimeTitleCard
+              className={styles.card}
               key={anime.mal_id}
               id={anime.mal_id}
               title={anime.title}

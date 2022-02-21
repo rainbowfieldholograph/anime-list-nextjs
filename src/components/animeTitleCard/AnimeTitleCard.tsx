@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { AnimeTitleCardProps } from './AnimeTitleCard.props'
 import styles from './AnimeTitleCard.module.scss'
 import { Link } from 'react-router-dom'
+import clsx from 'clsx'
 
 export const AnimeTitleCard: FC<AnimeTitleCardProps> = ({
   id,
@@ -9,9 +10,11 @@ export const AnimeTitleCard: FC<AnimeTitleCardProps> = ({
   subtitle,
   image,
   link,
+  className,
+  ...rest
 }: AnimeTitleCardProps): JSX.Element => {
   return (
-    <article className={styles.card}>
+    <article className={clsx(styles.card, className)} {...rest}>
       <Link className={styles.link} to={link}>
         <div className={styles.imageWrapper}>
           <img src={image} alt={title} />
