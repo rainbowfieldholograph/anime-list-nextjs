@@ -3,4 +3,5 @@ export interface AnimeTitleCardProps {
   title: string
   image: string
   link: string
+  subtitle: string
 }

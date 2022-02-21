@@ -1,7 +1,7 @@
 import { FC, useRef } from 'react'
 import { spacesToDash } from '../../helpers/helpers'
-import { AnimeTitlesCarouselProps } from './animeTitlesCarousel.props'
-import styles from './animeTitlesCarousel.module.scss'
+import { AnimeTitlesCarouselProps } from './AnimeTitlesCarousel.props'
+import styles from './AnimeTitlesCarousel.module.scss'
 import { AnimeTitleCard } from '../animeTitleCard/AnimeTitleCard'
 import clsx from 'clsx'
 
@@ -50,6 +50,7 @@ export const AnimeTitlesCarousel: FC<AnimeTitlesCarouselProps> = ({
               key={anime.mal_id}
               id={anime.mal_id}
               title={anime.title}
+              subtitle={anime.studios[0].name}
               image={anime.images.jpg.image_url}
               link={computeLink}
             />

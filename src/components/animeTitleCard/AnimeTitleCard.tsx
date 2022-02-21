@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 export const AnimeTitleCard: FC<AnimeTitleCardProps> = ({
   id,
   title,
+  subtitle,
   image,
   link,
 }: AnimeTitleCardProps): JSX.Element => {
@@ -16,6 +17,7 @@ export const AnimeTitleCard: FC<AnimeTitleCardProps> = ({
           <img src={image} alt={title} />
         </div>
         <p className={styles.title}>{title}</p>
+        <p className={styles.subtitle}>{subtitle}</p>
       </Link>
     </article>
   )
