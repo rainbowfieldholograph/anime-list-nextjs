@@ -18,11 +18,16 @@
     background-color: var(--menu-color-default);
     user-select: none;
 
-    &:hover,
-    &:focus-visible {
+    &:is(:hover, :focus-visible) {
       background-color: var(--color-focus);
       outline: none;
     }
+
+    // &:hover,
+    // &:focus-visible {
+    //   background-color: var(--color-focus);
+    //   outline: none;
+    // }
   }
 
   .content {
@@ -40,11 +45,15 @@
       overflow: hidden;
       text-overflow: ellipsis;
 
-      &:hover,
-      &:focus-visible {
+      &:is(:hover, :focus-visible) {
         background-color: var(--color-focus);
         outline: none;
       }
+      // &:hover,
+      // &:focus-visible {
+      //   background-color: var(--color-focus);
+      //   outline: none;
+      // }
     }
   }
 }

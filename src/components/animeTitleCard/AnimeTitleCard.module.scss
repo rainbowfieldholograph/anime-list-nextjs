@@ -32,10 +32,15 @@
       font-size: 70%;
     }
 
-    &:focus-visible .title,
-    &:hover .title {
+    &:is(:focus-visible, :hover) .title {
       color: var(--text-color-active);
       text-decoration: underline;
     }
+
+    // &:focus-visible .title,
+    // &:hover .title {
+    //   color: var(--text-color-active);
+    //   text-decoration: underline;
+    // }
   }
 }

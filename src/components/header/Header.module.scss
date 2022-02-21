@@ -9,8 +9,7 @@
   .button {
     padding: 1rem;
 
-    &:focus-visible,
-    &:hover {
+    &:is(:focus-visible, :hover) {
       background-color: var(--color-focus);
       outline: none;
     }
