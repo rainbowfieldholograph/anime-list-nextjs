@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 import { DropdownMenu } from '../dropdownMenu/DropdownMenu'
 import { IDropdownMenuItem } from '../dropdownMenu/DropdownMenu.props'
 import { Search } from '../search/Search'
@@ -16,7 +17,10 @@ const menuItems: IDropdownMenuItem[] = [
 export const Header: FC = ({ className, ...rest }: HeaderProps): JSX.Element => {
   return (
     <header {...rest} className={clsx(styles.header, className)}>
-      <h1>Anime List React</h1>
+      <Link to="/">
+        <h1 className={styles.title}>Anime List</h1>
+      </Link>
+
       <DropdownMenu menuItems={menuItems} className={styles.menu} title="Hello" />
       <Search />
       <a className={styles.button} href="">

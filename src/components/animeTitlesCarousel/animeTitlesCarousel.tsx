@@ -52,8 +52,8 @@ export const AnimeTitlesCarousel: FC<AnimeTitlesCarouselProps> = ({
               id={anime.mal_id}
               title={anime.title}
               subtitle={anime.studios[0].name}
-              image={anime.images.jpg.image_url}
-              link={computeLink}
+              image={anime.images.webp.image_url}
+              link={`anime/${anime.mal_id}`}
             />
           )
         })}

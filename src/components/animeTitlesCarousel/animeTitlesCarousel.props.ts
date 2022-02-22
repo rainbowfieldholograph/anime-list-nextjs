@@ -1,5 +1,5 @@
-import { Anime } from '../../interfaces/anime.interface'
+import { IAnime } from '../../interfaces/anime.interface'
 
 export interface AnimeTitlesCarouselProps {
-  animeTitles: Anime[]
+  animeTitles: IAnime[]
 }

@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { API_BASE_URL } from '../../helpers/api'
-import { Anime } from '../../interfaces/anime.interface'
+import { IAnime } from '../../interfaces/anime.interface'
 import { LoadingState } from '../../helpers/loadingState.enum'
-import { SeasonNowResponse } from '../../interfaces/seasonNowResponse'
+import { ISeasonNowResponse } from '../../interfaces/seasonNowResponse.interface'
 import type { RootState } from '../store'
 
 interface SeasonsNowState {
-  now: Anime[]
+  now: IAnime[]
   loading: LoadingState
 }
 
 export const fetchSeasonsNow = createAsyncThunk('animeTitles/fetchAnimeTitles', async () => {
   const response = await fetch(`${API_BASE_URL}seasons/now`)
-  const data: SeasonNowResponse = await response.json()
+  const data: ISeasonNowResponse = await response.json()
   return data.data
 })
 

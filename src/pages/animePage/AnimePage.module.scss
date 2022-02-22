@@ -1,0 +1,15 @@
+.genres {
+  display: flex;
+  column-gap: 0.5rem;
+  flex-wrap: wrap;
+
+  .genre {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.alterTitle:not(:last-child):after {
+  content: ', ';
+}

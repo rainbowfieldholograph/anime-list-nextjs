@@ -101,7 +101,7 @@ export interface Demographic {
   url: string
 }
 
-export interface Anime {
+export interface IAnime {
   mal_id: number
   url: string
   images: Images
