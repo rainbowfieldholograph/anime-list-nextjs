@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { API_BASE_URL } from '../../helpers/api'
 import { IAnime } from '../../interfaces/anime.interface'
-import { LoadingState } from '../../helpers/loadingState.enum'
+import { LoadingState } from '../../helpers/loadingState'
 import { ISeasonNowResponse } from '../../interfaces/seasonNowResponse.interface'
 import type { RootState } from '../store'
 
@@ -18,7 +18,7 @@ export const fetchSeasonsNow = createAsyncThunk('animeTitles/fetchAnimeTitles', 
 
 const initialState: SeasonsNowState = {
   now: [],
-  loading: LoadingState.idle,
+  loading: 'idle',
 }
 
 export const seasonsNowSlice = createSlice({
@@ -27,10 +27,10 @@ export const seasonsNowSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchSeasonsNow.pending, (state, action) => {
-      state.loading = LoadingState.pending
+      state.loading = 'pending'
     }),
       builder.addCase(fetchSeasonsNow.fulfilled, (state, action) => {
-        state.loading = LoadingState.succeeded
+        state.loading = 'succeeded'
         state.now = action.payload
       })
   },
