@@ -1,15 +1,34 @@
-.genres {
-  display: flex;
-  column-gap: 0.5rem;
-  flex-wrap: wrap;
+.wrapper {
+  .inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: repeat(1, 1fr);
+    gap: 1rem;
 
-  .genre {
-    text-decoration: underline;
-    text-decoration-style: dashed;
-    text-decoration-color: rgba(0, 0, 0, 0.4);
+    .poster {
+    }
+
+    .information {
+      .genres {
+        display: flex;
+        column-gap: 0.5rem;
+        flex-wrap: wrap;
+
+        .genre {
+          text-decoration: underline;
+          text-decoration-style: dashed;
+          text-decoration-color: rgba(0, 0, 0, 0.4);
+        }
+      }
+    }
+
+    .description {
+      grid-column-start: 2;
+      grid-column-end: 4;
+    }
   }
-}
 
-.alterTitle:not(:last-child):after {
-  content: ', ';
+  .alterTitle:not(:last-child):after {
+    content: ', ';
+  }
 }
