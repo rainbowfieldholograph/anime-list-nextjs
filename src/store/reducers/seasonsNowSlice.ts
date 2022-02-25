@@ -32,6 +32,9 @@ export const seasonsNowSlice = createSlice({
       builder.addCase(fetchSeasonsNow.fulfilled, (state, action) => {
         state.loading = 'succeeded'
         state.now = action.payload
+      }),
+      builder.addCase(fetchSeasonsNow.rejected, (state, action) => {
+        state.loading = 'failed'
       })
   },
 })
