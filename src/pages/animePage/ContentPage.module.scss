@@ -1,11 +1,16 @@
 .wrapper {
   .inner {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: repeat(1, 1fr);
+    // grid-template-rows: 1fr 1fr;
     gap: 1rem;
 
     .poster {
+      position: relative;
+      img {
+        position: absolute;
+        width: 100%;
+      }
     }
 
     .information {
@@ -22,9 +27,11 @@
       }
     }
 
+    .rating {
+    }
+
     .description {
-      grid-column-start: 2;
-      grid-column-end: 4;
+      grid-column: 2 / 4;
     }
   }
 

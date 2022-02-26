@@ -2,10 +2,10 @@ import { FC, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { IAnime } from '../../interfaces/anime.interface'
 import { IGetAnimeByIdResponse } from '../../interfaces/getAnimeByIdResponse.interface'
-import { AnimePageProps } from './AnimePage.props'
-import styles from './AnimePage.module.scss'
+import { ContentPageProps } from './ContentPage.props'
+import styles from './ContentPage.module.scss'
 
-export const AnimePage: FC = ({}: AnimePageProps): JSX.Element => {
+export const ContentPage: FC = ({}: ContentPageProps): JSX.Element => {
   const { id } = useParams()
   const [animeData, setAnimeData] = useState<IAnime | null>(null)
 
@@ -15,16 +15,15 @@ export const AnimePage: FC = ({}: AnimePageProps): JSX.Element => {
       .then((data: IGetAnimeByIdResponse) => setAnimeData(data.data))
   }, [])
 
-  console.log(useParams())
-  console.log(animeData)
-
   if (!animeData) return <h1>loading...</h1>
 
   return (
     <div className={styles.wrapper}>
       <h1>{animeData.title}</h1>
       <div className={styles.inner}>
-        <img className={styles.poster} src={animeData.images.webp.image_url} alt="" />
+        <div className={styles.poster}>
+          <img src={animeData.images.webp.image_url} alt="" />
+        </div>
         <div className={styles.information}>
           <h2>Information</h2>
           <p>Type: {animeData.type}</p>
@@ -45,16 +44,18 @@ export const AnimePage: FC = ({}: AnimePageProps): JSX.Element => {
               ? animeData.licensors.map((licensor) => (
                   <span key={licensor.mal_id}>{licensor.name}</span>
                 ))
-              : 'unkonown'}
+              : 'unknown'}
           </p>
           <span className={styles.genres}>
             Synonyms:{' '}
             {animeData.title_synonyms.map((alterTitle) => (
-              <span className={styles.alterTitle}>{alterTitle}</span>
+              <span key={alterTitle} className={styles.alterTitle}>
+                {alterTitle}
+              </span>
             ))}
           </span>
         </div>
-        <div>Rating</div>
+        <div className={styles.rating}>Rating</div>
         <aside className={styles.menu}>hello</aside>
         <div className={styles.description}>
           <h2>Description</h2>
