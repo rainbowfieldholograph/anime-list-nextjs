@@ -1,38 +1,37 @@
-import { FC, useRef } from 'react'
-import { spacesToDash } from '../../helpers/helpers'
-import { AnimeTitlesCarouselProps } from './AnimeTitlesCarousel.props'
-import styles from './AnimeTitlesCarousel.module.scss'
-import { AnimeTitleCard } from '../animeTitleCard/AnimeTitleCard'
-import clsx from 'clsx'
+import { FC, useRef } from 'react';
+import { AnimeTitlesCarouselProps } from './MediaScroller.props';
+import styles from './MediaScroller.module.scss';
+import { AnimeTitleCard } from '../animeTitleCard/AnimeTitleCard';
+import clsx from 'clsx';
 
-const JUMP_VALUE: number = 200
+const JUMP_VALUE: number = 200;
 
-export const AnimeTitlesCarousel: FC<AnimeTitlesCarouselProps> = ({
+export const MediaScroller: FC<AnimeTitlesCarouselProps> = ({
   animeTitles,
 }: AnimeTitlesCarouselProps): JSX.Element => {
-  const listRef = useRef<null | HTMLUListElement>(null)
+  const listRef = useRef<null | HTMLUListElement>(null);
 
   const scroll = (where: 'left' | 'right'): void => {
-    const element = listRef.current
-    let value = 0
+    const element = listRef.current;
+    let value = 0;
     switch (where) {
       case 'left':
-        value = -JUMP_VALUE
-        break
+        value = -JUMP_VALUE;
+        break;
       case 'right':
-        value = JUMP_VALUE
-        break
+        value = JUMP_VALUE;
+        break;
       default:
-        return
+        return;
     }
     if (element) {
-      element.focus()
+      element.focus();
       element.scrollTo({
         left: element.scrollLeft + value,
         behavior: 'smooth',
-      })
+      });
     }
-  }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -42,12 +41,11 @@ export const AnimeTitlesCarousel: FC<AnimeTitlesCarouselProps> = ({
       >
         {'<'}
       </button>
-      <ul className={styles.list} ref={listRef}>
+      <ul tabIndex={0} className={styles.scroller} ref={listRef}>
         {animeTitles.map((anime) => {
-          const computeLink: string = `${anime.mal_id}-${spacesToDash(anime.title)}`
           return (
             <AnimeTitleCard
-              className={styles.card}
+              className={styles.mediaElement}
               key={anime.mal_id}
               id={anime.mal_id}
               title={anime.title}
@@ -55,7 +53,7 @@ export const AnimeTitlesCarousel: FC<AnimeTitlesCarouselProps> = ({
               image={anime.images.webp.image_url}
               link={`anime/${anime.mal_id}`}
             />
-          )
+          );
         })}
       </ul>
       <button
@@ -65,5 +63,5 @@ export const AnimeTitlesCarousel: FC<AnimeTitlesCarouselProps> = ({
         {'>'}
       </button>
     </div>
-  )
-}
+  );
+};
