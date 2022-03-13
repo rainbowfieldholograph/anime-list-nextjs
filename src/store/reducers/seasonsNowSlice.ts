@@ -1,25 +1,30 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { API_BASE_URL } from '../../helpers/api'
-import { IAnime } from '../../interfaces/anime.interface'
-import { LoadingState } from '../../helpers/loadingState'
-import { ISeasonNowResponse } from '../../interfaces/seasonNowResponse.interface'
-import type { RootState } from '../store'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { API_BASE_URL } from '../../helpers/api';
+import { IAnime } from '../../interfaces/anime.interface';
+import { LoadingState } from '../../helpers/loadingState';
+import { ISeasonNowResponse } from '../../interfaces/seasonNowResponse.interface';
+import type { RootState } from '../store';
 
 interface SeasonsNowState {
-  now: IAnime[]
-  loading: LoadingState
+  now: IAnime[];
+  loading: LoadingState;
 }
 
 export const fetchSeasonsNow = createAsyncThunk('animeTitles/fetchAnimeTitles', async () => {
-  const response = await fetch(`${API_BASE_URL}seasons/now`)
-  const data: ISeasonNowResponse = await response.json()
-  return data.data
-})
+  try {
+    const response = await fetch(`${API_BASE_URL}seasons/now`);
+    const data: ISeasonNowResponse = await response.json();
+    return data.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+});
 
 const initialState: SeasonsNowState = {
   now: [],
   loading: 'idle',
-}
+};
 
 export const seasonsNowSlice = createSlice({
   name: 'seasonsNow',
@@ -27,20 +32,20 @@ export const seasonsNowSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchSeasonsNow.pending, (state, action) => {
-      state.loading = 'pending'
+      state.loading = 'pending';
     }),
       builder.addCase(fetchSeasonsNow.fulfilled, (state, action) => {
-        state.loading = 'succeeded'
-        state.now = action.payload
+        state.loading = 'succeeded';
+        state.now = action.payload;
       }),
       builder.addCase(fetchSeasonsNow.rejected, (state, action) => {
-        state.loading = 'failed'
-      })
+        state.loading = 'failed';
+      });
   },
-})
+});
 
-export const {} = seasonsNowSlice.actions
+export const {} = seasonsNowSlice.actions;
 
-export const selectSeasonsNow = (state: RootState) => state.seasonsNow
+export const selectSeasonsNow = (state: RootState) => state.seasonsNow;
 
-export default seasonsNowSlice.reducer
+export default seasonsNowSlice.reducer;

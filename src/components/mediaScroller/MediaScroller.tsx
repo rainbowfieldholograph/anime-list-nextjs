@@ -7,9 +7,11 @@ export const MediaScroller: FC<MediaScrollerProps> = ({ children }): JSX.Element
   const listRef = useRef<null | HTMLUListElement>(null);
 
   const scroll = (where: 'left' | 'right'): void => {
-    const JUMP_VALUE: number = window.screen.width * 0.3;
     const element = listRef.current;
+    if (!element) return;
     let value = 0;
+    const JUMP_VALUE: number = element.offsetWidth * 0.3;
+    console.log(JUMP_VALUE);
     switch (where) {
       case 'left':
         value = -JUMP_VALUE;
@@ -20,13 +22,11 @@ export const MediaScroller: FC<MediaScrollerProps> = ({ children }): JSX.Element
       default:
         return;
     }
-    if (element) {
-      element.focus();
-      element.scrollTo({
-        left: element.scrollLeft + value,
-        behavior: 'smooth',
-      });
-    }
+    element.focus();
+    element.scrollTo({
+      left: element.scrollLeft + value,
+      behavior: 'smooth',
+    });
   };
 
   return (
