@@ -16,14 +16,6 @@
       scroll-snap-align: start;
     }
 
-    .mediaElement {
-      & img {
-        width: 100%;
-        aspect-ratio: 8 / 11;
-        object-fit: cover;
-      }
-    }
-
     &::-webkit-scrollbar {
       width: 0;
       background-color: transparent;

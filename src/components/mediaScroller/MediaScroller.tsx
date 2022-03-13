@@ -1,17 +1,13 @@
 import { FC, useRef } from 'react';
-import { AnimeTitlesCarouselProps } from './MediaScroller.props';
+import { MediaScrollerProps } from './MediaScroller.props';
 import styles from './MediaScroller.module.scss';
-import { AnimeTitleCard } from '../animeTitleCard/AnimeTitleCard';
 import clsx from 'clsx';
 
-const JUMP_VALUE: number = 200;
-
-export const MediaScroller: FC<AnimeTitlesCarouselProps> = ({
-  animeTitles,
-}: AnimeTitlesCarouselProps): JSX.Element => {
+export const MediaScroller: FC<MediaScrollerProps> = ({ children }): JSX.Element => {
   const listRef = useRef<null | HTMLUListElement>(null);
 
   const scroll = (where: 'left' | 'right'): void => {
+    const JUMP_VALUE: number = window.screen.width * 0.3;
     const element = listRef.current;
     let value = 0;
     switch (where) {
@@ -41,20 +37,8 @@ export const MediaScroller: FC<AnimeTitlesCarouselProps> = ({
       >
         {'<'}
       </button>
-      <ul tabIndex={0} className={styles.scroller} ref={listRef}>
-        {animeTitles.map((anime) => {
-          return (
-            <AnimeTitleCard
-              className={styles.mediaElement}
-              key={anime.mal_id}
-              id={anime.mal_id}
-              title={anime.title}
-              subtitle={anime.studios[0].name}
-              image={anime.images.webp.image_url}
-              link={`anime/${anime.mal_id}`}
-            />
-          );
-        })}
+      <ul ref={listRef} tabIndex={0} className={styles.scroller}>
+        {children}
       </ul>
       <button
         onClick={() => scroll('right')}
