@@ -1,0 +1,18 @@
+.wrapper {
+  .headLink {
+    display: block;
+
+    &:is(:focus-visible, :hover) {
+      color: var(--text-color-active);
+      text-decoration: underline;
+    }
+  }
+
+  .item {
+    & img {
+      width: 100%;
+      aspect-ratio: 8 / 11;
+      object-fit: cover;
+    }
+  }
+}
