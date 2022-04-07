@@ -1,3 +1,1 @@
-todo:
--Add React Query
--Configure ESLint
+Just anime list, created using React NextJS, TypeScript, SCSS. Data from Jikan APi.
