@@ -7,8 +7,9 @@
     width: inherit;
     outline: none;
 
-    img {
-      width: 100%;
+    .imageWrapper * {
+      width: 100% !important;
+      // height: auto !important;
     }
 
     .title {

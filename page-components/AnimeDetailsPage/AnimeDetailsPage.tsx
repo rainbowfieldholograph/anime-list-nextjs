@@ -4,6 +4,7 @@ import styles from './AnimeDetailsPage.module.scss';
 import Image from 'next/image';
 import Head from 'next/head';
 import { HeadingLine } from '../../components/HeadingLine';
+import imageLoader from '../../image-loader';
 
 export const AnimeDetailsPage: FC<ContentPageProps> = ({ data }) => {
   if (!data) return <h1>loading...</h1>;
@@ -17,7 +18,15 @@ export const AnimeDetailsPage: FC<ContentPageProps> = ({ data }) => {
         <h1>{data.title}</h1>
         <div className={styles.inner}>
           <div className={styles.poster}>
-            <img src={data.images.webp.image_url} alt="" />
+            <Image
+              loader={imageLoader}
+              unoptimized
+              width="225"
+              height="320"
+              src={data.images.webp.image_url}
+              alt={data.title}
+              placeholder="empty"
+            />
           </div>
           <div className={styles.information}>
             <h2>Information</h2>
