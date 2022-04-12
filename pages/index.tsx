@@ -1,17 +1,21 @@
-import Head from 'next/head';
+import {  GetStaticProps, NextPage } from 'next';
+import { getCurrentSeasonAnimes } from '../helpers/api';
 import { HomePage } from '../page-components/HomePage';
+import { IAnime } from '../interfaces/anime.interface';
 
-export const Home = (): JSX.Element => {
+const Home: NextPage<{ currentSeasonAnimes: IAnime[] }> = ({
+  currentSeasonAnimes,
+}): JSX.Element => {
   return (
     <>
-      <Head>
-        <title>Anime List Next</title>
-        <meta name="description" content="Anime List, created with NextJS and Jinkan API" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <HomePage />
+      <HomePage currentSeasonAnimes={currentSeasonAnimes} />
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const currentSeasonAnimesData = await getCurrentSeasonAnimes();
+  return { props: { currentSeasonAnimes: currentSeasonAnimesData } };
 };
 
 export default Home;

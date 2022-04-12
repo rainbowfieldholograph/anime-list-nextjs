@@ -1,26 +1,12 @@
-import { useEffect, useState } from 'react';
 import { News } from '../../components/News';
 import { PopularNow } from '../../components/PopularNow';
 import { Tooltip } from '../../components/Tooltip';
-import { getCurrentSeasonAnime } from '../../helpers/api';
-import { IAnime } from '../../interfaces/anime.interface';
+import { HomePageProps } from './HomePage.props';
 
-export const HomePage = (): JSX.Element => {
-  const [data, setData] = useState<IAnime[]>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getCurrentSeasonAnime();
-      setData(data);
-    };
-    fetchData();
-  }, []);
-
-  if (!data) return <></>;
-
+export const HomePage = ({ currentSeasonAnimes }: HomePageProps): JSX.Element => {
   return (
     <>
-      <PopularNow data={data} />
+      <PopularNow data={currentSeasonAnimes} />
       <News />
       <Tooltip>
         <Tooltip.Target aria-describedby="tooltip">Hover me</Tooltip.Target>
